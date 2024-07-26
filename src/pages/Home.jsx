@@ -16,7 +16,7 @@ export default function Home() {
           </p>
           <Card />
         </div>
-        <div className="border-l-2 border-gray-400 my-12 mx-6 "></div>
+        <div className="border-l-2 border-extraLight my-12 mx-6 "></div>
         <div className="w-1/2"></div>
       </div>
       <div className="flex mt-6">
