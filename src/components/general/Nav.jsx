@@ -1,10 +1,24 @@
 // Nav.jsx
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { RiArrowRightSFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [hasToggled, setHasToggled] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen && hasToggled) {
+      setIsClosing(true);
+      const timeout = setTimeout(() => {
+        setIsClosing(false);
+      }, 1000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isOpen]);
 
   const handleDragEnd = (event, info) => {
     if (info.offset.x > 100) {
@@ -12,31 +26,121 @@ export default function Nav() {
     } else {
       setIsOpen(false);
     }
+    setHasToggled(true);
+  };
+
+  const NavItem = ({ text, to }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    return (
+      <Link
+        to={to}
+        onClick={() => {
+          setIsOpen(false);
+        }}
+      >
+        <div className="relative">
+          <motion.div
+            animate={{ width: isHovered ? "100%" : "none" }}
+            transition={{ duration: 0.5 }}
+            className="absolute cursor-pointer  flex flex-col gap-4 top-6"
+            onHoverStart={() => {
+              setIsHovered(true);
+            }}
+            onHoverEnd={() => {
+              setIsHovered(false);
+            }}
+          >
+            <motion.hr className="border-dark" />
+            <motion.hr className="border-dark" />
+          </motion.div>
+          <motion.span
+            onHoverStart={() => {
+              setIsHovered(true);
+            }}
+            onHoverEnd={() => {
+              setIsHovered(false);
+            }}
+            className="text-6xl font-general font-bold cursor-pointer z-100"
+          >
+            {text}
+          </motion.span>
+        </div>
+      </Link>
+    );
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0, display: "none", width: 0 },
+    visible: {
+      opacity: 1,
+      display: "block",
+      width: "100%",
+      transition: {
+        duration: 0.5,
+        when: "beforeChildren", // Ensure the parent animation completes before starting children animations
+        staggerChildren: 0.1, // Stagger the children animations by 0.1s
+      },
+    },
+    exit: { opacity: 0, display: "none", width: 0 },
+  };
+
+  const lineVariants = {
+    hidden: { width: 0 },
+    visible: { width: "100%" },
   };
 
   return (
     <>
       <motion.div
-        className={`fixed top-0 bottom-0 left-0  flex items-center justify-end z-50 bg-primary text-white  ${
-          isOpen && "border-r border-gray-400 shadow-xl"
-        }`}
+        className={`fixed top-0 bottom-0 left-0  flex items-center justify-end z-50 bg-primary  ${
+          isOpen && "shadow-xl"
+        }
+         
+         `}
         drag="x"
         dragConstraints={{ left: isOpen ? 0 : -300, right: 0 }}
         dragElastic={0.1}
-        animate={{ width: isOpen ? "25%" : "auto" }}
-        transition={{ duration: 0.5 }}
+        animate={{
+          width: isOpen ? "25%" : isClosing ? "0%" : "auto",
+          borderRight: isOpen ? "1px solid #9ca3af" : "none",
+        }}
+        transition={{ duration: 0.5, delay: isOpen ? 0 : 0.5 }}
         onDragEnd={handleDragEnd}
         onMouseUp={() => {
           setIsOpen(!isOpen);
+          setHasToggled(true);
         }}
       >
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={containerVariants}
+              className="ml-12 h-1/2"
+            >
+              <div className="flex flex-col gap-12">
+                {Array.from({ length: 9 }).map((_, index) => (
+                  <motion.hr
+                    key={index}
+                    className="border border-dark"
+                    variants={lineVariants}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.div
           className="p-2 relative  bg-primary shadow-2xl border border-dark rounded-r-full cursor-pointer"
           whileTap={{ scale: 0.9 }}
           animate={{ left: isOpen ? 32 : "auto" }}
+          transition={{ duration: 0.5, delay: isOpen ? 0 : 0.7 }}
         >
-          <div className="rounded-r-full border border-dashed border-gray-500">
-          <motion.div
+          <div className="rounded-r-full border border-dashed border-light">
+            <motion.div
               animate={{ rotate: isOpen ? 180 : 0 }} // Rotate the arrow based on isOpen state
               transition={{ duration: 0.5 }}
             >
@@ -49,12 +153,13 @@ export default function Nav() {
       <motion.div
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? 0 : "-100%" }}
-        transition={{ duration: 0.8 }}
-        className="fixed top-0 left-0 h-screen w-screen bg-primary text-white z-40 flex flex-col items-center justify-center"
+        transition={{ duration: 0.7 }}
+        className="fixed top-0 left-0 h-screen w-screen bg-primary z-40 flex items-center justify-center"
       >
-        <div className="p-4">
-          <h2 className="text-xl font-bold">Navbar</h2>
-          {/* Add your nav items here */}
+        <div className="flex flex-col items-center gap-16  h-full justify-center ml-10 mt-8">
+          <NavItem text="HOME" to="/" />
+          <NavItem text="WORK" to="/work" />
+          <NavItem text="ABOUT" to="/about" />
         </div>
       </motion.div>
     </>

@@ -15,7 +15,8 @@ export default {
       },
       colors: {
         dark: "#111827",
-        light: "#FFFFFF",
+        extraLight:"#9ca3af",
+        light: "#6b7280",
         primary: "#D2CAC2",
         hoveredCard:'#b6ada1',
         secondary: "#d6d6d6",
