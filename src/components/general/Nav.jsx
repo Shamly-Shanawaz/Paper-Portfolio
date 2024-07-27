@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { RiArrowRightSFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,36 +29,43 @@ export default function Nav() {
     setHasToggled(true);
   };
 
-  const NavItem = ({ text }) => {
+  const NavItem = ({ text, to }) => {
     const [isHovered, setIsHovered] = useState(false);
     return (
-      <div className="relative">
-        <motion.div
-          animate={{ width: isHovered ? "100%" : "none" }}
-          transition={{ duration: 0.5 }}
-          className="absolute cursor-pointer  flex flex-col gap-4 top-6"
-          onHoverStart={() => {
-            setIsHovered(true);
-          }}
-          onHoverEnd={() => {
-            setIsHovered(false);
-          }}
-        >
-          <motion.hr className="border-dark" />
-          <motion.hr className="border-dark" />
-        </motion.div>
-        <motion.span
-          onHoverStart={() => {
-            setIsHovered(true);
-          }}
-          onHoverEnd={() => {
-            setIsHovered(false);
-          }}
-          className="text-6xl font-general font-bold cursor-pointer z-100"
-        >
-          {text}
-        </motion.span>
-      </div>
+      <Link
+        to={to}
+        onClick={() => {
+          setIsOpen(false);
+        }}
+      >
+        <div className="relative">
+          <motion.div
+            animate={{ width: isHovered ? "100%" : "none" }}
+            transition={{ duration: 0.5 }}
+            className="absolute cursor-pointer  flex flex-col gap-4 top-6"
+            onHoverStart={() => {
+              setIsHovered(true);
+            }}
+            onHoverEnd={() => {
+              setIsHovered(false);
+            }}
+          >
+            <motion.hr className="border-dark" />
+            <motion.hr className="border-dark" />
+          </motion.div>
+          <motion.span
+            onHoverStart={() => {
+              setIsHovered(true);
+            }}
+            onHoverEnd={() => {
+              setIsHovered(false);
+            }}
+            className="text-6xl font-general font-bold cursor-pointer z-100"
+          >
+            {text}
+          </motion.span>
+        </div>
+      </Link>
     );
   };
 
@@ -149,9 +157,9 @@ export default function Nav() {
         className="fixed top-0 left-0 h-screen w-screen bg-primary z-40 flex items-center justify-center"
       >
         <div className="flex flex-col items-center gap-16  h-full justify-center ml-10 mt-8">
-          <NavItem text="HOME" />
-          <NavItem text="WORK" />
-          <NavItem text="ABOUT" />
+          <NavItem text="HOME" to="/" />
+          <NavItem text="WORK" to="/work" />
+          <NavItem text="ABOUT" to="/about" />
         </div>
       </motion.div>
     </>

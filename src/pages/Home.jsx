@@ -4,7 +4,7 @@ import { Card } from "../components";
 export default function Home() {
   return (
     <div>
-      <div className=" mt-12 flex gap-8">
+      <div className=" mt-6 flex gap-8">
         <div>
           <img src={DP} className="h-[90vh] object-cover w-72" />
         </div>
@@ -19,7 +19,7 @@ export default function Home() {
         <div className="border-l-2 border-extraLight my-12 mx-6 "></div>
         <div className="w-1/2"></div>
       </div>
-      <div className="flex mt-6">
+      <div className="flex mt-6 pb-1">
         <div className="bg-dark">
           <span className="text-9xl text-primary font-extrabold tracking-wide">
             SOFTWARE ENGINEER
