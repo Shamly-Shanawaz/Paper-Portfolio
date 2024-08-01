@@ -92,7 +92,7 @@ export default function Nav() {
   return (
     <>
       <motion.div
-        className={`fixed top-0 bottom-0 left-0  flex items-center justify-end z-50 bg-primary  ${
+        className={`fixed top-0 bottom-0 left-0  flex items-center justify-end z-50 bg-BG  ${
           isOpen && "shadow-xl"
         }
          
@@ -106,10 +106,6 @@ export default function Nav() {
         }}
         transition={{ duration: 0.5, delay: isOpen ? 0 : 0.5 }}
         onDragEnd={handleDragEnd}
-        onMouseUp={() => {
-          setIsOpen(!isOpen);
-          setHasToggled(true);
-        }}
       >
         <AnimatePresence>
           {isOpen && (
@@ -134,10 +130,14 @@ export default function Nav() {
         </AnimatePresence>
 
         <motion.div
-          className="p-2 relative  bg-primary shadow-2xl border border-dark rounded-r-full cursor-pointer"
+          className="p-2 relative  bg-BG shadow-2xl border border-dark rounded-r-full cursor-pointer"
           whileTap={{ scale: 0.9 }}
           animate={{ left: isOpen ? 32 : "auto" }}
           transition={{ duration: 0.5, delay: isOpen ? 0 : 0.7 }}
+          onMouseUp={() => {
+            setIsOpen(!isOpen);
+            setHasToggled(true);
+          }}
         >
           <div className="rounded-r-full border border-dashed border-light">
             <motion.div
@@ -154,7 +154,7 @@ export default function Nav() {
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? 0 : "-100%" }}
         transition={{ duration: 0.7 }}
-        className="fixed top-0 left-0 h-screen w-screen bg-primary z-40 flex items-center justify-center"
+        className="fixed top-0 left-0 h-screen w-screen bg-BG z-40 flex items-center justify-center"
       >
         <div className="flex flex-col items-center gap-16  h-full justify-center ml-10 mt-8">
           <NavItem text="HOME" to="/" />

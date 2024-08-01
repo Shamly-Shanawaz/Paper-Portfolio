@@ -29,7 +29,8 @@ export default {
         inputOnFocus: "#c7c6eb",
       },
       backgroundImage: {
-        'BG': "url('/src/assets/images/bg2.jpg')",
+        'BG': "url('/src/assets/images/Free-Textured-Paper-Background.jpg')",
+        'burnt-bg': "url('src/assets/images/transparent-realistic-style-old-paper-old-parchment-paper-grim-old-dirty-parchment-with-worn-rough-1710924527082.webp')",
       },
       screens: {
         "2xl": { max: "1535px" },

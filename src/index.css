@@ -18,7 +18,10 @@
 }
 
 .paragraph::first-letter {
-  @apply text-8xl font-normal font-firstLetter float-left mr-4 bg-dark text-primary px-1;
+  @apply text-8xl font-normal font-firstLetter float-left mr-4 bg-dark text-[#f3ebdd] px-1;
+}
+
+.justified::first-letter {
   line-height: 1.2;
 }
 
@@ -43,8 +46,6 @@
   border-radius: 2px;
 }
 
-
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: #777;
 }
@@ -62,4 +63,3 @@
   background-color: transparent; /* Set the background of the end track piece to transparent */
   margin-bottom: 4px; /* Add margin to the bottom */
 }
-

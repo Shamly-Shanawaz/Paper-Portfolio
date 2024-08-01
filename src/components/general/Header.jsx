@@ -13,9 +13,9 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="bg-primary border-b border-extraLight py-1 text-center sticky top-0 z-[9999]">
+    <div className="bg-BG border-b border-extraLight py-1 text-center sticky top-0 z-[9999]">
       <span className="absolute left-8 top-1/2 transform -translate-y-1/2 font-general font-bold">{currentDate}</span>
-      <span className="font-heading text-6xl pb-4 rounded-b-[0.7rem] shadow-md bg-primary px-4 border border-extraLight">
+      <span className="font-heading text-6xl pb-4 rounded-b-[0.7rem] shadow-md bg-BG px-4 border border-extraLight">
         Shamly Shanawaz
       </span>
     </div>
