@@ -7,6 +7,9 @@ import {
   SiMongodb,
   SiMicrosoftsqlserver,
   SiGraphql,
+  SiDocker,
+  SiKubernetes,
+  SiGnubash,
 } from "react-icons/si";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { DiMysql } from "react-icons/di";
@@ -72,6 +75,9 @@ export default function Skills() {
         <Card text="MySQL" Logo={DiMysql} fill color="#00758F" />
         <Card text="MSSQL" Logo={SiMicrosoftsqlserver} fill color="#a2201e" />
         <Card text="GraphQL" Logo={SiGraphql} fill color="#b60078" />
+        <Card text="Docker" Logo={SiDocker} fill color="#2496ED" />
+        <Card text="Kubernetes" Logo={SiKubernetes}  color="#326CE5" />
+        <Card text="Shell Scripting" Logo={SiGnubash} color="#000000" />
       </div>
     </div>
   );

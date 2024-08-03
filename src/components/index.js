@@ -6,9 +6,9 @@ import Caption from "./general/Caption";
 import Heading from "./general/Heading";
 import Work from "./about/Work";
 import Education from "./about/Education";
-import Certifications from "./about/Certifications";
 import Skills from "./about/Skills";
 import Awards from "./about/Awards";
+import Certs from "./about/Certs";
 
 export {
   Card,
@@ -20,6 +20,6 @@ export {
   Work,
   Education,
   Awards,
-  Certifications,
   Skills,
+  Certs,
 };

@@ -2,9 +2,9 @@ import {
   Caption,
   Work,
   Education,
-  Certifications,
   Skills,
   Awards,
+  Certs,
 } from "../components";
 export default function About() {
   return (
@@ -24,7 +24,7 @@ export default function About() {
           <hr className="border border-extraLight mx-10" />
           <Skills />
           <hr className="border border-extraLight mx-10 mb-4" />
-          <Certifications />
+          <Certs />
         </div>
         <div className="border-l-2 border-extraLight my-2 "></div>
         <div>
