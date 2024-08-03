@@ -9,7 +9,7 @@ export default function Card() {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileTap={{ boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.2), inset 0px 1px 2px rgba(0, 0, 0, 0.2)" }}
-      className="border-[3px] hover:bg-hoveredCard bg-primary border-dark p-2 rounded-lg text-center shadow-lg cursor-pointer"
+      className="border-[3px] hover:bg-hoveredCard bg-BG border-dark p-2 rounded-lg text-center shadow-lg cursor-pointer"
     >
       <div
         className="relative h-20 border-dashed border-2 border-light  rounded-lg overflow-hidden"
