@@ -21,20 +21,20 @@ export default function Certs() {
         className="block"
       >
         <Card2>
-          <div className="gap-6 flex px-2 items-center">
+          <div className="gap-6 flex px-2 items-center relative overflow-hidden">
             <motion.div
               className="relative text-4xl"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: isHovered ? 0 : 1 }}
-              transition={{ duration: 0.5 }}
+              initial={{ y: 0 }}
+              animate={{ y: isHovered ? -30 : 0 }}
+              transition={{ duration: 0.3 }}
             >
               <Logo />
             </motion.div>
             <motion.div
               className="absolute text-4xl top-0 bottom-0 flex items-center justify-center text-light"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ y: 40 }}
+              animate={{ y: isHovered ? 0 : 40 }}
+              transition={{ duration: 0.3 }}
             >
               <IoIosLink />
             </motion.div>
@@ -57,9 +57,9 @@ export default function Certs() {
       <div className="mb-4">
         <CertCard
           Logo={SiIbm}
-          title="Hands-on Introduction to Linux Commands and Shell Scripting"
-          date="July 2024"
-          link="https://coursera.org/share/e8002e1e6fd64b6d3866f52baf401b75"
+          title="Python for Data Science, AI & Development"
+          date="August 2024"
+          link="https://coursera.org/share/a34ac355c12ca79775188cd5db838a74"
         />
         <motion.div
           initial={{ opacity: 0, height: 0 }}
@@ -71,6 +71,12 @@ export default function Certs() {
           }}
           transition={{ duration: 1, type: "spring" }}
         >
+          <CertCard
+            Logo={SiIbm}
+            title="Hands-on Introduction to Linux Commands and Shell Scripting"
+            date="July 2024"
+            link="https://coursera.org/share/e8002e1e6fd64b6d3866f52baf401b75"
+          />
           <CertCard
             Logo={SiIbm}
             title="Introduction to DevOps"

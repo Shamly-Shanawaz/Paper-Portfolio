@@ -9,6 +9,8 @@ import Education from "./about/Education";
 import Skills from "./about/Skills";
 import Awards from "./about/Awards";
 import Certs from "./about/Certs";
+import AnimatedNumbers from "./about/AnimatedNumbers";
+import Footer from "./general/Footer";
 
 export {
   Card,
@@ -22,4 +24,6 @@ export {
   Awards,
   Skills,
   Certs,
+  AnimatedNumbers,
+  Footer,
 };
