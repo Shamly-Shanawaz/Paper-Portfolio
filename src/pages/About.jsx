@@ -5,8 +5,18 @@ import {
   Skills,
   Awards,
   Certs,
+  AnimatedNumbers,
 } from "../components";
 export default function About() {
+  const AnimatedText = ({ text, value }) => (
+    <div className=" font-general  bg-dark text-primary justify-center  gap-1 rounded-md py-1 px-2 flex flex-col  items-end  md:text-6xl sm:text-5xl xs:text-4xl">
+      <div className="text-6xl">
+        <AnimatedNumbers value={value} />+
+      </div>
+        <span className="text-3xl text-light">{text}</span>
+    </div>
+  );
+
   return (
     <div className="mt-2">
       <div className="text-center ">
@@ -31,6 +41,13 @@ export default function About() {
           <Work />
           <hr className="border border-extraLight mx-10 my-10" />
           <Education />
+          <hr className="border border-extraLight mx-10 my-10" />
+          <div className="flex justify-evenly">
+
+          <AnimatedText value={6} text="Projects" />
+          <AnimatedText value={6} text="Projects" />
+          </div>
+          <div className="flex gap-2 justify-center items-center "></div>
         </div>
       </div>
       <Awards />
